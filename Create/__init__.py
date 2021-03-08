@@ -14,9 +14,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         'port':3306,
         'user':'sayun@private-sayun-mysql',
         'password':'rkskekfk1234!@#$',
-        'database':'test',
-        'client_flags': [ClientFlag.SSL],
-        'ssl_cert': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
+        'database':'test'
     }
 
     try:
