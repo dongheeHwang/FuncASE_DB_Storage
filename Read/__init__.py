@@ -31,7 +31,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             # Read data
             cursor.execute("SELECT * FROM inventory")
             rows = cursor.fetchall()
-            logging.info("Read",cursor.rowcount,"row(s) of data.")
+            # logging.info("Read",cursor.rowcount,"row(s) of data.")
 
             # Print all rows
             # text = ''
@@ -40,4 +40,4 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         except Exception as e:
             logging.info(e)
 
-    return func.HttpResponse(text)
+        return func.HttpResponse(text)
