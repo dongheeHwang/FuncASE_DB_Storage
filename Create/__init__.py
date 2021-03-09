@@ -39,7 +39,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         try:
             # Insert some data into table
-            sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+            sql = "INSERT INTO inventory (name, quantity) VALUES (%s, %s)"
             val = [
                 ('banana', 150),
                 ('orange', 154),
