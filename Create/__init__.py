@@ -37,18 +37,21 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
     logging.info("Finished creating table.")
 
+    try:
     # Insert some data into table
-    cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
-    logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-    cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
-    logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-    cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
-    logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
+        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
+        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
+        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
 
-    # Cleanup
-    conn.commit()
-    cursor.close()
-    conn.close()
-    logging.info("Done.")
+        # Cleanup
+        conn.commit()
+        cursor.close()
+        conn.close()
+        logging.info("Done.")
+    except Exception as e:
+        logging.info("------------------------>" + e)
 
     return func.HttpResponse("OK")
