@@ -10,8 +10,8 @@ from mysql.connector import errorcode
 def main(req: func.HttpRequest) -> func.HttpResponse:
     
     config = {
-        'host':'172.21.10.4',
-        'port':3306,
+        'host':'private-sayun-mysql.privatelink.mysql.database.azure.com',
+        # 'port':3306,
         'user':'sayun@private-sayun-mysql',
         'password':'rkskekfk1234!@#$',
         'database':'test'
