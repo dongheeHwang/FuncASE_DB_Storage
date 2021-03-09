@@ -29,29 +29,29 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     else:
         cursor = conn.cursor()
 
-    # Drop previous table of same name if one exists
-    cursor.execute("DROP TABLE IF EXISTS inventory;")
-    logging.info("Finished dropping table (if existed).")
+        # Drop previous table of same name if one exists
+        cursor.execute("DROP TABLE IF EXISTS inventory;")
+        logging.info("Finished dropping table (if existed).")
 
-    # Create table
-    cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-    logging.info("Finished creating table.")
+        # Create table
+        cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+        logging.info("Finished creating table.")
 
-    try:
-    # Insert some data into table
-        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
-        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
-        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-        cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
-        logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+        try:
+            # Insert some data into table
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
+            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
+            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
+            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
 
-        # Cleanup
-        conn.commit()
-        cursor.close()
-        conn.close()
-        logging.info("Done.")
-    except Exception as e:
-        logging.info("------------------------>" + e)
+            # Cleanup
+            conn.commit()
+            cursor.close()
+            conn.close()
+            logging.info("Done.")
+        except Exception as e:
+            logging.info("------------------------>" + e)
 
     return func.HttpResponse("OK")
