@@ -34,9 +34,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             logging.info("Read",cursor.rowcount,"row(s) of data.")
 
             # Print all rows
-            text = ''
-            for row in rows:
-                text += "Data row = (%s, %s)" %(str(row[0]), str(row[1]))
+            # text = ''
+            # for row in rows:
+            #     text += "Data row = (%s, %s)" %(str(row[0]), str(row[1]))
         except Exception as e:
             logging.info(e)
 
