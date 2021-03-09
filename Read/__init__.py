@@ -5,13 +5,10 @@ import azure.functions as func
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     config = {
-        'host':'172.21.10.4',
-        'port':3306,
+        'host':'private-sayun-mysql.privatelink.mysql.database.azure.com',
         'user':'sayun@private-sayun-mysql',
         'password':'rkskekfk1234!@#$',
-        'database':'test',
-        'client_flags': [ClientFlag.SSL],
-        'ssl_cert': '/var/wwww/html/DigiCertGlobalRootG2.crt.pem'
+        'database':'test'
     }
 
     try:
