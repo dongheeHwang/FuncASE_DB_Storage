@@ -39,11 +39,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         try:
             # Insert some data into table
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %i);", ("banana", 150))
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
             logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %i);", ("orange", 154))
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
             logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %i);", ("apple", 100))
+            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
             logging.info("Inserted",cursor.rowcount,"row(s) of data.")
 
             # Cleanup
