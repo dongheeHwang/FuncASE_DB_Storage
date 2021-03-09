@@ -24,14 +24,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     else:
         cursor = conn.cursor()
 
-    # Read data
-    cursor.execute("SELECT * FROM inventory;")
-    rows = cursor.fetchall()
-    logging.info("Read",cursor.rowcount,"row(s) of data.")
+        cursor.execute("SHOW TABLES")
+        tables = cursor.fetchall()
+        for (table_name,) in cursor:
+            logging.info(table_name)
 
-    # Print all rows
-    text = ''
-    for row in rows:
-        text += "Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))
+        # Read data
+        cursor.execute("SELECT * FROM inventory;")
+        rows = cursor.fetchall()
+        logging.info("Read",cursor.rowcount,"row(s) of data.")
+
+        # Print all rows
+        text = ''
+        for row in rows:
+            text += "Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))
 
     return func.HttpResponse(text)
