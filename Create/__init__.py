@@ -37,6 +37,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             isExists = True
             break
 
+    logging.info(isExists)
     if isExists == False:
         cursor.execute("CREATE DATABASE " + databaseName)
 
