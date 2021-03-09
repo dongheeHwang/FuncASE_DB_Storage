@@ -11,10 +11,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     
     config = {
         'host':'private-sayun-mysql.privatelink.mysql.database.azure.com',
-        # 'port':3306,
         'user':'sayun@private-sayun-mysql',
-        'password':'rkskekfk1234!@#$',
-        'database':'test'
+        'password':'rkskekfk1234!@#$'
     }
 
     try:
@@ -29,6 +27,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             logging.info(err)
     else:
         cursor = conn.cursor()
+
+    databaseName = "test"
+    isExists = False
+    cursor.execute("SHOW DATABASES")
+
+    for x in cursor:
+        if x == databaseName:
+            isExists = True
+            break
+
+    if isExists == False:
+        cursor.execute("CREATE DATABASE " + databaseName)
 
     # Drop previous table of same name if one exists
     cursor.execute("DROP TABLE IF EXISTS inventory;")
