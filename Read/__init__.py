@@ -28,15 +28,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         cursor = conn.cursor()
 
         try:
-            # Read data
             cursor.execute("SELECT * FROM inventory")
             rows = cursor.fetchall()
-            # logging.info("Read",cursor.rowcount,"row(s) of data.")
-
-            # Print all rows
             text = 'okok'
             for row in rows:
-                text += f'{row[0]} {row[1]} {row[2]}'
+                text += f'{row[0]} {row[1]} {row[2]}\n'
         except Exception as e:
             logging.info(e)
 
