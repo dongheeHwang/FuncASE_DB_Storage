@@ -52,6 +52,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             conn.close()
             logging.info("Done.")
         except Exception as e:
-            logging.info("------------------------>" + e)
+            logging.info(e)
 
     return func.HttpResponse("OK")
