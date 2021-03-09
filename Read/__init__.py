@@ -35,8 +35,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
             # Print all rows
             text = 'okok'
-            # for row in rows:
-            #     text += "Data row = (%s, %s)" %(str(row[0]), str(row[1]))
+            for row in rows:
+                text += row
         except Exception as e:
             logging.info(e)
 
