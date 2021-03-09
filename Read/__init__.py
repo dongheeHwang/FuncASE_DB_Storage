@@ -14,6 +14,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         'database':'test'
     }
 
+    text = f'Host:{config['host']}\n'
+
     try:
         conn = mysql.connector.connect(**config)
         logging.info("Connection established")
@@ -30,7 +32,6 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         try:
             cursor.execute("SELECT * FROM inventory")
             rows = cursor.fetchall()
-            text = ''
             for row in rows:
                 text += f'{row[0]} {row[1]} {row[2]}\n'
         except Exception as e:
