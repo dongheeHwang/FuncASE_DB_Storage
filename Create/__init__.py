@@ -39,12 +39,19 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
         try:
             # Insert some data into table
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""banana"", ""150"");")
-            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""orange"", ""154"");")
-            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
-            cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""apple"", ""100"");")
-            logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+            sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+            val = [
+                ('banana', 150),
+                ('orange', 154),
+                ('apple', 100)
+            ]
+            cursor.executemany(sql, val)
+            # cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""banana"", ""150"");")
+            # logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+            # cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""orange"", ""154"");")
+            # logging.info("Inserted",cursor.rowcount,"row(s) of data.")
+            # cursor.execute("INSERT INTO inventory (name, quantity) VALUES (""apple"", ""100"");")
+            # logging.info("Inserted",cursor.rowcount,"row(s) of data.")
 
             # cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
             # logging.info("Inserted",cursor.rowcount,"row(s) of data.")

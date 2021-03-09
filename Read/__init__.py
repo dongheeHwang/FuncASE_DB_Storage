@@ -27,7 +27,8 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     else:
         cursor = conn.cursor()
 
-        cursor.execute("SHOW TABLES")
+        cursor.execute('USE test;')
+        cursor.execute('SHOW TABLES;')
         tables = cursor.fetchall()
         for (table_name,) in cursor:
             logging.info(table_name)
