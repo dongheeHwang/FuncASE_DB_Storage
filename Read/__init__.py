@@ -36,7 +36,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             # Print all rows
             text = 'okok'
             for row in rows:
-                logging.info(row)
+                text += '{row[0]} {row[1]} {row[2]}'
         except Exception as e:
             logging.info(e)
 
