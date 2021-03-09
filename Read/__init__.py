@@ -2,6 +2,9 @@ import logging
 
 import azure.functions as func
 
+import mysql.connector
+from mysql.connector import errorcode
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     config = {
