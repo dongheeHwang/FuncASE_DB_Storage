@@ -15,26 +15,32 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         'database':'testdb'
     }
 
+    logtext = ''
     try:
         conn = mysql.connector.connect(**config)
+        logtext += "Connection established"
         logging.info("Connection established")
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            logtext += "Something is wrong with the user name or password"
             logging.info("Something is wrong with the user name or password")
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            logtext += "Database does not exist"
             logging.info("Database does not exist")
         else:
+            logtext += err
             logging.info(err)
     else:
         cursor = conn.cursor()
 
+        text = ''
         try:
             cursor.execute("SELECT * FROM company")
             rows = cursor.fetchall()
-            text = ''
             for row in rows:
                 text += f'{row[0]} {row[1]} {row[2]}\n'
         except Exception as e:
+            logtext += e.toString()
             logging.info(e)
-
-        return func.HttpResponse(text)
+        logtext += text
+        return func.HttpResponse(logtext)
