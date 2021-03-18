@@ -8,9 +8,9 @@ from mysql.connector import errorcode
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     config = {
-        # 'host':'private-sayun-mysql.privatelink.mysql.database.azure.com',
-        'host':'192.168.251.4',
-        'user':'sayun@private-sayun-mysql',
+        # 'host':'z-shb-krc-edm-dev-mrd-edm-db-01.mariadb.database.azure.com',
+        'host':'10.2.103.5',
+        'user':'azureadmin@z-shb-krc-edm-dev-mrd-edm-db-01',
         'password':'rkskekfk1234!@#$',
         'database':'test'
     }
