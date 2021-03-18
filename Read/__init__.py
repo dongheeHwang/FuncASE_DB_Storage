@@ -29,7 +29,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         cursor = conn.cursor()
 
         try:
-            cursor.execute("SELECT * FROM inventory")
+            cursor.execute("SELECT * FROM company")
             rows = cursor.fetchall()
             text = ''
             for row in rows:
