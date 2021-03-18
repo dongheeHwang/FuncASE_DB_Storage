@@ -12,7 +12,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         'host':'10.2.103.5',
         'user':'azureadmin@z-shb-krc-edm-dev-mrd-edm-db-01',
         'password':'rkskekfk1234!@#$',
-        'database':'test'
+        'database':'testdb'
     }
 
     try:
