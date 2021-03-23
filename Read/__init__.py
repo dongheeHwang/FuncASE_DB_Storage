@@ -28,7 +28,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             logtext += "Database does not exist"
             logging.info("Database does not exist")
         else:
-            logtext += err
+            #logtext += err
             logging.info(err)
     else:
         cursor = conn.cursor()
