@@ -40,7 +40,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
             for row in rows:
                 text += f'{row[0]} {row[1]} {row[2]}\n'
         except Exception as e:
-            logtext += e.toString()
+            # logtext += e.toString()
             logging.info(e)
         logtext += text
         return func.HttpResponse(logtext)
