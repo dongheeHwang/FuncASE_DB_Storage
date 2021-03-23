@@ -9,10 +9,10 @@ from mysql.connector import errorcode
 def main(req: func.HttpRequest) -> func.HttpResponse:
     config = {
         # 'host':'z-shb-krc-edm-dev-mrd-edm-db-01.mariadb.database.azure.com',
-        'host':'10.2.103.5',
-        'user':'azureadmin@z-shb-krc-edm-dev-mrd-edm-db-01',
+        'host':'hdhdemoserver.mariadb.database.azure.com',
+        'user':'azureadmin@hdhdemoserver',
         'password':'rkskekfk1234!@#$',
-        'database':'testdb'
+        # 'database':'testdb'
     }
 
     logtext = ''
