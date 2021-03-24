@@ -13,7 +13,6 @@ import tarfile
 import datetime
 import sys
 
-from . import collector
 from modules import utils
 from modules import common
 from modules import scrapingUtil
